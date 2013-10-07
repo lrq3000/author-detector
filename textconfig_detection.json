@@ -1,0 +1,13 @@
+[
+// Config file for unlabeled texts to use for detection
+// The only mandatory variable here is "file", the path to the text file, that you must specify for each of the texts you want to identify the author.
+// The other variables will be used for various optional purposes such as "label" which is used for model validation.
+    {
+        "file":"Henri Bergson/bergson_rire.txt",
+        "label": "Henri Bergson" // For model validation
+    },
+    {
+        "file":"Rene Crevel/crevel_esprit-contre-raison.txt",
+        "label": "Rene Crevel" // For model validation
+    }
+]

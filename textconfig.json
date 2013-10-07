@@ -1,0 +1,35 @@
+[
+// Config file listing labeled texts for learning
+    {
+        "file":"Henri Bergson/bergson_rire.txt",
+        "author":"Henri Bergson",
+        "title":"Le Rire",
+        "genre":"essay",
+        "theme":"theme1"
+    },
+    {
+        "file":"Henri Bergson/bergson_evolution.txt",
+        "author":"Henri Bergson",
+        "title":"L Evolution Creatrice",
+        "genre":"essay",
+        "theme":["theme1", "theme2"]
+    },
+    {
+        "file":"Henri Bergson/bergson_energie.txt",
+        "author":"Henri Bergson",
+        "title":"L Energie Spirituelle",
+        "genre":"essay"
+    },
+    {
+        "file":"Rene Crevel/crevel_clavecin-diderot.txt",
+        "author":"Rene Crevel",
+        "title":"Le Clavecin de Diderot",
+        "genre":"essay"
+    },
+    {
+        "file":"Rene Crevel/crevel_esprit-contre-raison.txt",
+        "author":"Rene Crevel",
+        "title":"L Esprit contre la raison",
+        "genre":"essay"
+    }
+]

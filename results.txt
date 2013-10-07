@@ -1,0 +1,22 @@
+{
+    "Result": {
+        "0": [
+            "Henri Bergson", 
+            0.556776861490423
+        ], 
+        "1": [
+            "Rene Crevel", 
+            0.5311331872428199
+        ]
+    }, 
+    "Result_details": {
+        "0": {
+            "Henri Bergson": 0.556776861490423, 
+            "Rene Crevel": NaN
+        }, 
+        "1": {
+            "Henri Bergson": NaN, 
+            "Rene Crevel": 0.5311331872428199
+        }
+    }
+}

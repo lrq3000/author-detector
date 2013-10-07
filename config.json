@@ -1,0 +1,89 @@
+{
+// Main configuration file for the application
+// This is a JSON + Comments format
+// To comment, use // for line comment and /* */ for multilines comments
+// To get a correct syntax highlighting, use either Java or Javascript, this should do the trick (because there's no syntax highlighting for JSON + Comments currently)
+
+    /* == Routine configuration == */
+    // What is the workflow you want to use when learning and detecting (identifying author)?
+    "workflow_learn":["featuresextractor", "patternsextractor", "merger", "postprocessor"],
+    "workflow": [{"featuresextractor": "extract"}, {"patternsextractor": "extract"}, {"postprocessor": "process"}, {"detector": "detect"}, {"validator": "validate"}], // avoid merge here! No need at detection since we have no attribute to merge upon.
+    
+    // What are the classes you want to load?
+    "classes": {
+        "reader": "BaseTextReader",
+        "preprocessor": "XMLStripper",
+        "featuresextractor": "TreeTagger",
+        "patternsextractor": "NGrams",
+        "merger": "CountMerger",
+        "postprocessor": ["TFIDF", "FilterLowCount"],
+        //"postprocessor_detection": ["AugmentedTermFrequency", "FilterLowCount"],
+        //"postprocessor2": "Matrixify",
+        "detector": "CosineSimilarity",
+        "validator": "Salience"
+        //"postprocessor2": ["FilterLowCount"]
+    },
+ 
+/*
+    "classes_alias": {
+        "postprocessor_detection": "postprocessor"
+    },
+*/
+
+    
+    /* == Main global variables == */
+    
+    // Root directory where all text files are placed
+    "textrootdir":"texts",
+    
+    // Where is the text parameters configuration file
+    "textconfig":"textconfig.json", // Labeled texts to learn from (the labels should be in this file, not inside the texts)
+    "textconfig_detection":"textconfig_detection.json", // Unlabeled (without attributes) text to identify (find the labels)
+    
+    // After learning, where to save the learnt parameters?
+    "parametersfile":"parameters.txt",
+    
+    // After detection (identification), where to save the results? (in addition to being printed in the console)
+    "resultsfile":"results.txt",
+    
+    // Debug option (verbose output for some modules)
+    "debug": true,
+
+    /* == Reader configuration == */
+    // -- General
+    //"reader_charset":"utf-8", // default: utf-8. This variable may be used by other modules as well
+    
+    /* == PreProcessor config == */
+    // -- RegexpFilter
+    //"regexpfilter_mode": "strip", // either 'strip' or 'keep'
+    //"regexpfilter_patterns": ['pattern1', 'pattern2', 'etc'], // list of regexp patterns
+    // -- StopWordsFilter
+    "stopwordsfilter_mode": "keep", // either 'strip' or 'keep'
+    "stopwordsfilter_file": "stopwords_fr.txt", // path to the stopwords file
+    
+    /* == FeaturesExtractor config == */
+    // -- TreeTagger
+    "treetagger_return":"gramcat", // possible values: "lemmas" or "gramcat" or "both"
+    //"treetagger_lang":"fr", // language parser to use by TreeTagger
+    //"treetagger_charset":"utf-8", // encoding of the characters (leave it at "utf-8" for most languages)
+    //"treetagger_tmpdir":"tmp", // where to store the temporary files TreeTagger will generate
+    
+    /* == PatternsExtractor config == */
+    // -- Words N-Grams
+    "ngrams_number": 4,
+    "ngrams_sort": false, // sort the ngrams (words ordering in a ngram doesn't matter anymore, reduce the number of combinations)
+    //"ngrams_wildcards": 2,
+    //"ngrams_mode_learning": "insert", // insert wildcards between the words or replace words by wildcards? (possible values: "insert" or "replace"
+    //"ngrams_mode_detection": "replace", // you can specify two distinct modes of wildcards for learning and detection
+    //"ngrams_wildcards_placeholder": "*",
+    
+    /* == Merger config == */
+    // -- General
+    "merger_attribute": "author",
+    
+    /* == PostProcessing config == */
+    // -- FilterLowCount
+    "filterlowcount_threshold": "mean", // int between 0 and 1 for percentile (0.5 for median); "mean" to drop below or equal to the mean
+    
+    "_": false // empty option so that all the other options have a comma at the end
+}
