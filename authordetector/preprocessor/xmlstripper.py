@@ -46,6 +46,11 @@ class XMLStripper(BasePreProcessor):
     # @param Text A raw text input from a reader
     # @return dict A dict containing Text, the preprocessed text
     def process(self, Text=None, *args, **kwargs):
-        tree = ET.fromstring(Text)
-        notags = ET.tostring(tree, encoding='utf8', method='text')
-        return {'Text': notags}
+        try:
+            tree = ET.fromstring(Text)
+            notags = ET.tostring(tree, encoding='utf8', method='text')
+            return {'Text': notags}
+        except Exception as e:
+            print("XMLStripper failed. Maybe there's no XML in this text?")
+            pass
+            return {'Text': Text}

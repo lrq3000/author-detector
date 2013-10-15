@@ -11,8 +11,8 @@
     
     // What are the classes you want to load?
     "classes": {
-        "reader": "BaseTextReader",
-        "preprocessor": "XMLStripper",
+        "reader": "BaseTextReader", // Do NOT place this type of module (reader) in workflow, it is automatically called
+        "preprocessor": "XMLStripper", // Do NOT place this type of module (preprocessor) in workflow, it is automatically called
         "featuresextractor": "TreeTagger",
         "patternsextractor": "NGrams",
         "merger": "CountMerger",
