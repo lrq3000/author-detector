@@ -49,6 +49,10 @@ class TreeTagger(BaseFeaturesExtractor):
     # @return dict A dict containing X, a dict of features PER text (so X[0] will contain all the lemmas/gramcat for text 0, X[1] all features for text 1, etc.)
     def extract(self, *args, **kwargs):
 
+        # Rename TreeTagger's Linux binary to avoid conflicts (by default, same name is used for both MacOSX and Linux binaries)
+        for lang in treetaggerwrapper.g_langsupport.iterkeys(): # update for each language
+            treetaggerwrapper.g_langsupport[lang]["binfile-lin"] = "tree-tagger-lin"
+
         # Construction et configuration du wrapper
         tagger = treetaggerwrapper.TreeTagger(TAGLANG=self.config.get("treetagger_lang", "fr"), TAGDIR=self.config.get("treetagger_tmpdir", os.path.join('authordetector', 'lib', 'treetagger', 'TreeTagger')),
                                               TAGINENC=self.config.get("treetagger_charset", "utf-8"), TAGOUTENC=self.config.get("treetagger_charset", "utf-8"))
