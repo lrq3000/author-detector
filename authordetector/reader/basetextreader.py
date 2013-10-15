@@ -138,4 +138,4 @@ class BaseTextReader(BaseClass):
         else:
             self.textconfig.init(configfile=self.config.get("textconfig_detection"))
         self.textconfig.load(comments=True)
-        self.textrootdir = self.config.get("textrootdir")
+        self.textrootdir = os.path.abspath(self.config.get("textrootdir"))
