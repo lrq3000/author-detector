@@ -80,3 +80,14 @@ This project makes a heavy use of third-party libraries, mainly:
 - Numpy
 
 Please refer to their licensing informations if you want to reuse these libraries.
+
+2023 note
+---------
+
+This section is written aposteriori, in 2023, hence 10 years after the last update in this repository.
+
+First off, I forgot to mention that a similar approach to Petri networks was implemented to manage constraints and ensure workflows work (ie, that we can chain modules without a bug), because constraints allow to ensure that a similar API is implemented and we specify when we can chain or not various categories of modules. Although an adhoc Petri Network verifier system was implemented (ie, a system to check if the chain is valid or not), I wanted to implement a more formal Petri network verifier later, with more guarantees, but did not due to lack of time and resources. For those interested, a further generalization exists in the form of Coloured Petri Networks, which allow for even more subtyping of constraints and hence more flexibility while retaining the ability to formally check validity.
+
+The approach taken by this project, and its sibling [oacs](https://github.com/lrq3000/oacs), to standardize the general machine learning process to two "learn()" and "detect()" processes was later implemented independently by the scikit-learn package, to much acclaim. Chainable workflows were also later implemented in scikit-learn, although not with the same ease of configuration, and no petri network like formal verification system.
+
+Finally, the sharing of compiled machine learning models, ie, what are nowadays called the "weights", as a way to share a closed source form of a machine learning program, is nowadays very prevalent, especially with huggingface.co. This is one of the major reasons why AI has seen a boom in development in the 2020s.
